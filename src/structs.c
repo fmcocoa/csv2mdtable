@@ -5,25 +5,16 @@ struct csv_cell {
     struct csv_cell *next;
 };
 
-struct csv_head {
-    struct csv_cell *cell;
-};
-
 struct csv_line {
     struct csv_cell *cell;
     struct csv_line *next;
 };
 
 struct csv_body {
-    struct csv_head *head;
     struct csv_line *line;
 };
 
 struct csv_cell * new_cell() {
-    return NULL;
-}
-
-struct csv_head * new_head() {
     return NULL;
 }
 
@@ -45,10 +36,6 @@ void free_cell(struct csv_cell *cell) {
     }
 }
 
-void free_head(struct csv_head *head) {
-    free_cell(head->cell);
-}
-
 void free_line(struct csv_line *line) {
     struct csv_line *next;
 
@@ -60,6 +47,5 @@ void free_line(struct csv_line *line) {
 }
 
 void free_body(struct csv_body *body) {
-    free_head(body->head);
     free_line(body->line);
 }
